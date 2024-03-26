@@ -21,10 +21,11 @@ class NewTodo(QDialog):
     def addTodo(self):
         title = self.edit.text()
         status = "En cours"
-        # try:
-        ToDoObject(title, status).save()
-        print("Tâche ajoutée avec succès")
-        self.parent().parent().list_todo.addWidget(ToDoWidget(ToDoObject(title, status)))
-        # except:
-        #     print("Erreur lors de l'ajout de la tâche")
+        try:
+            todo = ToDoObject(title, status)
+            todo.save()
+            print("Tâche ajoutée avec succès")
+            self.parent().parent().scroll_layout.addWidget(ToDoWidget(todo))
+        except:
+            print("Erreur lors de l'ajout de la tâche")
         self.edit.clear()

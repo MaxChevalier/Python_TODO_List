@@ -1,5 +1,5 @@
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QPushButton, QHBoxLayout)
+from PySide6.QtWidgets import (QWidget, QLabel, QPushButton, QHBoxLayout)
 from src.ToDoObject import ToDoObject
 
 
@@ -9,14 +9,19 @@ class ToDoWidget (QWidget) :
         super(ToDoWidget, self).__init__(parent)
         self.ToDo = ToDo
         self.title = QLabel(ToDo.title)
+        self
         self.status = QPushButton(ToDo.status)
-        self.delete = QPushButton("Supprimer")
+        self.status.setMaximumWidth(100)
+        self.status.setMinimumWidth(100)
+        self.delete = QPushButton("🗑")
+        self.delete.setMaximumWidth(30)
+        self.delete.setMinimumWidth(30)
         self.delete.clicked.connect(self.deleteToDo)
         self.status.clicked.connect(self.changeStatus)
         layout = QHBoxLayout()
-        layout.addWidget(self.title)
         layout.addWidget(self.status)
         layout.addWidget(self.delete)
+        layout.addWidget(self.title)
         self.setLayout(layout)
     
     def deleteToDo(self):
