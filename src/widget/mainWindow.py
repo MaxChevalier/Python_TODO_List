@@ -6,6 +6,11 @@ from src.ToDoObject import ToDoObject
 from .Todo import ToDoWidget
 
 class MainWindows(QMainWindow):
+    """
+    fenetre principale de l'application qui contient:
+    - le formulaire pour ajouter une tâche
+    - la liste des tâches
+    """
     
     def __init__(self):
         super().__init__()
