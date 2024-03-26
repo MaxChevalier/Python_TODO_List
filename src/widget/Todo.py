@@ -4,6 +4,13 @@ from src.ToDoObject import ToDoObject
 
 
 class ToDoWidget (QWidget) :
+    """
+    Widget pour afficher une tâche
+    composé de:
+    - un bouton pour changer le status de la tâche
+    - un bouton pour supprimer la tâche
+    - le titre de la tache
+    """
     
     def __init__(self, ToDo: ToDoObject, parent=None) -> None:
         super(ToDoWidget, self).__init__(parent)
@@ -25,10 +32,17 @@ class ToDoWidget (QWidget) :
         self.setLayout(layout)
     
     def deleteToDo(self):
+        """
+        supprime la tâche dans la base de données
+        supprime la tâche de la liste des tâches
+        """
         self.ToDo.delete()
         self.deleteLater()
         
     def changeStatus(self):
+        """
+        modifie le status de la tâche et le sauvegarde dans la base de données
+        """
         if self.ToDo.status == "En cours":
             self.ToDo.status = "Terminé"
         else:
